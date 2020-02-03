@@ -1,0 +1,152 @@
+<mvc:View controllerName="asaod.ASAOD.controller.Home" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:microchart="sap.suite.ui.microchart"
+	xmlns:c="sap.suite.ui.commons" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>title}" floatingFooter="true" class="pageBg" showHeader="false">
+				<content>
+					<Bar class="headerBar">
+						<contentMiddle>
+							<Title level="H2" text="Assembly Dashboard" class="headerBarTitle"/>
+						</contentMiddle>
+						<contentRight>
+							<Button id="openMenu" icon="sap-icon://menu2" press="handlePressOpenMenu" class="homeNav" type="Transparent"/>
+						</contentRight>
+					</Bar>
+					<FlexBox alignItems="Start" width="100%" height="auto">
+						<items>
+							<VBox width="100%">
+								<l:BlockLayout >
+									<l:BlockLayoutRow visible="{= ${home>/showButton} }">
+										<l:BlockLayoutCell backgroundColorSet="ColorSet6" backgroundColorShade="ShadeB" width="100%" class="homeCell">
+											<Button class="homeNav" text="Show All Buttons" width="100%" type="Transparent" icon="sap-icon://show" press="onToggleNav"/>
+										</l:BlockLayoutCell>
+									</l:BlockLayoutRow>
+									<l:BlockLayoutRow visible="{= ${home>/hideButton} }">
+										<l:BlockLayoutCell backgroundColorSet="ColorSet6" backgroundColorShade="ShadeB" width="100%" class="homeCell">
+											<Button class="homeNav" text="Hide All Buttons" width="100%" type="Transparent" icon="sap-icon://hide" press="onToggleNav"/>
+										</l:BlockLayoutCell>
+									</l:BlockLayoutRow>
+									<l:BlockLayoutRow visible="{= ${home>/topBar} }">
+										<l:BlockLayoutCell backgroundColorSet="ColorSet6" backgroundColorShade="ShadeB" width="100%" class="homeCell">
+											<Button class="homeNav headBtn" text="Search Project" width="100%" type="Transparent" icon="sap-icon://search/" press="onPressSearch">
+												<customData>
+													<core:CustomData key="search" value="inprocess" writeToDom="{= ${home>/visible} === 'search'}"/>
+												</customData>
+											</Button>
+										</l:BlockLayoutCell>
+										<l:BlockLayoutCell backgroundColorSet="ColorSet6" backgroundColorShade="ShadeB" width="100%" class="homeCell"
+											visible="{= ${roles>/GEN} === 'true'}">
+											<Button class="homeNav headBtn" text="My Projects" width="100%" type="Transparent" icon="sap-icon://my-view" press="onPressPersonal">
+												<customData>
+													<core:CustomData key="personal" value="inprocess" writeToDom="{= ${home>/visible} === 'personal'}"/>
+												</customData>
+											</Button>
+										</l:BlockLayoutCell>
+										<l:BlockLayoutCell backgroundColorSet="ColorSet6" backgroundColorShade="ShadeB" width="100%" class="homeCell">
+											<Button class="homeNav headBtn" text="Favourite Projects" width="100%" type="Transparent" icon="sap-icon://favorite" press="onPressFav">
+												<customData>
+													<core:CustomData key="fav" value="inprocess" writeToDom="{= ${home>/visible} === 'fav'}"/>
+												</customData>
+											</Button>
+										</l:BlockLayoutCell>
+										<l:BlockLayoutCell backgroundColorSet="ColorSet6" backgroundColorShade="ShadeB" width="100%" class="homeCell"
+											visible="{= ${roles>/LEAD} === 'true'}">
+											<Button class="homeNav headBtn" text="My Team's Project" width="100%" type="Transparent" icon="sap-icon://group" press="onPressTeam">
+												<customData>
+													<core:CustomData key="team" value="inprocess" writeToDom="{= ${home>/visible} === 'team'}"/>
+												</customData>
+											</Button>
+										</l:BlockLayoutCell>
+										<l:BlockLayoutCell backgroundColorSet="ColorSet6" backgroundColorShade="ShadeB" width="100%" class="homeCell"
+											visible="{= ${roles>/TOOLADM} === 'true'}">
+											<Button class="homeNav" text="Manage User" press="onPressAdmin" width="100%" type="Transparent" icon="sap-icon://action" iconFirst="false"/>
+										</l:BlockLayoutCell>
+									</l:BlockLayoutRow>
+								</l:BlockLayout>
+							</VBox>
+						</items>
+					</FlexBox>
+					<FlexBox height="{home>/height}" alignItems="{home>/alignItems}" justifyContent="Center" id="flexBoxHome">
+						<items>
+							<VBox class="vboxHome" visible="{= ${home>/visible} === 'search' }">
+								<!--<Title class="homeLabel homeTitle" text="Project Selection" titleStyle="H4"/>-->
+								<Label text="Component" class="homeLabel"/>
+								<Input type="Text" placeholder="Select Component..." id="__compSelect" showSuggestion="true" showValueHelp="true"
+									valueHelpRequest="handleValueHelp" suggestionItems="{comp>/results}" value="{home>/comp}" valueHelpOnly="true">
+									<suggestionItems>
+										<SuggestionItem text="{comp>CompId}" key="{comp>CompId}"/>
+									</suggestionItems>
+								</Input>
+								<Label text="Release" class="homeLabel"/>
+								<Select width="100%" forceSelection="false" change="onSelectRelease" items="{ path: 'comprel>/results' }" selectedKey="{home>/compRel}">
+									<core:Item key="{comprel>CompRel}" text="{comprel>CompRel}"/>
+								</Select>
+								<Label text="Release Assembly ?" class="homeLabel"/>
+								<Switch customTextOff="NO" customTextOn="YES" state="{home>/release}"/>
+								<Label text="SP Level" class="homeLabel" visible="{= !${home>/release} }"/>
+								<Select visible="{= !${home>/release} }" width="100%" forceSelection="false" items="{ path: 'splevel>/results' }" selectedKey="{home>/splevel}">
+									<core:Item key="{splevel>Value}" text="{splevel>Value}"/>
+								</Select>
+								<html:br/>
+								<VBox class="sapUiSizeCompact">
+									<Button width="100%" text="Show Progress" icon="sap-icon://display-more" type="Emphasized" press="onShowProgress"/>
+									<Button width="100%" text="Change" icon="sap-icon://edit" type="Emphasized" press="editProject"/>
+									<Button class="sapUiSizeCompact" width="100%" text="Display" icon="sap-icon://display" type="Emphasized" press="displayProject"></Button>
+									<Button text="Add to Favorites" icon="sap-icon://add-favorite" width="100%"></Button>
+								</VBox>
+							</VBox>
+							<VBox visible="{= ${home>/visible} === 'personal' || ${home>/visible} === 'team' || ${home>/visible} === 'fav' }"
+								backgroundDesign="Transparent" height="100%" width="100%">
+								<FacetFilter id="idFacetFilter" type="Light" showPersonalization="true" showReset="true" reset="handleFacetFilterReset" lists=""
+									showSummaryBar="true" visible="{= ${home>/visible} === 'team' }">
+									<lists>
+										<FacetFilterList title="Owner" key="Owner" mode="MultiSelect" listClose="handleListClose"
+											items="{path: 'name>/', templateShareable: 'true'}">
+											<items>
+												<FacetFilterItem text="{name>Name}" key="{name>Owner}"/>
+											</items>
+										</FacetFilterList>
+										<FacetFilterList title="Status" key="D_State" mode="MultiSelect" listClose="handleListClose">
+											<items>
+												<FacetFilterItem text="Deadline Passed" key="R"/>
+												<FacetFilterItem text="Deadline Today" key="Y"/>
+												<FacetFilterItem text="On Track" key="G"/>
+											</items>
+										</FacetFilterList>
+									</lists>
+								</FacetFilter>
+								<List id="projectList"
+									items="{ path : 'prj>/results' , sorter : {path : 'Name', descending : false, group : true}, groupHeaderFactory: '.getProjectHeader', templateShareable:true }">
+									<headerToolbar>
+										<OverflowToolbar>
+											<Title text="View Projects"/>
+											<ToolbarSpacer/>
+											<SearchField liveChange="onSearchProjectText" placeholder="Search by Project Text" width="250px"/>
+											<Button text="Help" type="Accept" icon="sap-icon://sys-help" press="openProjectHelp"></Button>
+										</OverflowToolbar>
+									</headerToolbar>
+									<NotificationListItem class="wbox" title="{prj>ShortText}" description="Deadline Item : {prj>D_Text}"
+										authorName="{path : 'prj>D_DateTime' , formatter:'.formatter.resolveDate'}" showCloseButton="false" press="onPressProject">
+										<customData>
+											<core:CustomData key="passed" value="inprocess" writeToDom="{= ${prj>D_State} === 'R'}"></core:CustomData>
+											<core:CustomData key="sameday" value="inprocess" writeToDom="{= ${prj>D_State} === 'Y'}"></core:CustomData>
+											<core:CustomData key="before" value="inprocess" writeToDom="{= ${prj>D_State} === 'G'}"></core:CustomData>
+										</customData>
+										<buttons>
+											<ToggleButton class="homeNav headBtn" icon="sap-icon://favorite" tooltip="{= ${prj>fav_state} === 'true' ? 'added to favorites' : 'add to favourites' }" 
+											enabled="true" pressed="{prj>fav_state}"
+												press="addToFav"/>
+											<Button icon="sap-icon://edit" tooltip="Edit Project {prj>ProjgrpId}" press="changeProject"/>
+											<Button icon="sap-icon://display" tooltip="View Project {prj>ProjgrpId}" press="viewProject"/>
+										</buttons>
+									</NotificationListItem>
+								</List>
+							</VBox>
+						</items>
+					</FlexBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

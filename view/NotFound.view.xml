@@ -1,0 +1,4 @@
+<mvc:View controllerName="asaod.ASAOD.controller.NotFound" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" displayBlock="true">
+	<MessagePage text= " No matching items found." description=" Check the filter settings." title=" " showHeader=" true"
+		showNavButton=" true" icon=" sap-icon://documents" navButtonPress="onNavBack"></MessagePage>
+</mvc:View>

@@ -1,0 +1,77 @@
+<mvc:View controllerName="asaod.ASAOD.controller.Assembly" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns:microchart="sap.suite.ui.microchart"
+	xmlns:c="sap.suite.ui.commons" displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>assmblytitle}" floatingFooter="true" class="pageAbg" showHeader="true" showNavButton="true" navButtonPress="onNavBack">
+				<headerContent>
+					<Bar>
+						<contentMiddle>
+							<Switch customTextOn="Edit" customTextOff="View" state="{edit>/switchState}" change="toggleMode"></Switch>
+						</contentMiddle>
+					</Bar>
+				</headerContent>
+				<content>
+					<Title text="{/results/0/ProjectText} | {/results/0/ProjectId} | " class="projectTitle"/>
+					<Title text="{parts : [ '/results/0/GroupProjectStatus' ],formatter:'.formatter.ProjectStatus'}" class="projectTitle"/>
+					<Toolbar>
+						<Button text="{i18n>attr}" icon="sap-icon://display" type="Accept" press="openAttributes"/>
+						<Button text="{i18n>runPrj}" enabled="{edit>/switchState}" icon="sap-icon://shipping-status" type="Emphasized" press="runGroupProject"/>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button class="btn" type="Default" width="auto" press="openInfo" icon="sap-icon://legend" tooltip="Legend"/>
+						<Button icon="sap-icon://synchronize" type="Emphasized" press="syncProject" tooltip="Refresh {/results/0/ProjectText}"/>
+					</Toolbar>
+					<VBox id="__mainContent" items="{/results}">
+						<Panel width="100%" backgroundDesign="Solid" class="phasePanel" expandable="true" expand="onExpandPhase">
+							<headerToolbar>
+								<Toolbar height="3rem">
+									<Title text="{PhseShortText}" titleStyle="H2" class="phaseText"/><ToolbarSpacer/>
+									<Button icon="{path : 'State', formatter : '.formatter.PhaseState'}"/>
+									<Button icon="sap-icon://synchronize" type="Accept" press="syncPhase" tooltip="Refresh {PhseShortText}"/>
+								</Toolbar>
+							</headerToolbar>
+							<infoToolbar>
+								<Toolbar design="Transparent">
+									<MessageStrip type="Success" text="{Success}" showIcon="true"/>
+									<ToolbarSpacer/>
+									<MessageStrip type="Error" text="{Fail}" showIcon="true"/>
+									<ToolbarSpacer/>
+									<MessageStrip type="Warning" text="{Warning}" showIcon="true"/>
+									<ToolbarSpacer/>
+									<MessageStrip type="Information" text="{Inprocess}" showIcon="true" customIcon="sap-icon://shipping-status"/>
+								</Toolbar>
+							</infoToolbar>
+							<content>
+								<ProgressIndicator displayValue="{CompletedItems}/{TotalItems}" width="100%"
+									percentValue="{parts: ['TotalItems','CompletedItems'],formatter:'.formatter.Complete'}"
+									state="{parts: ['TotalItems','CompletedItems','Fail'],formatter:'.formatter.State'}"/>
+								<List class="sapContrast sapContrastPlus" items="{item>/results}">
+									<items>
+										<NotificationListItem title="{parts : [{path : 'item>ItemShortText'}, {path : 'item>MW_ACTION'}], formatter : '.formatter.getItemHeader'}"
+											priority="{path : 'item>Item_Status', formatter : '.formatter.ItemStatus'}" description="{item>Project_Text}"
+											authorName="{item>ItemStatusText}"
+											authorPicture="{parts : [{path : 'item>Item_Status'}, {path : 'item>MW_ACTION'}], formatter : '.formatter.ItemStatusIcon'}"
+											showCloseButton="false" class="whitebox">
+											<customData>
+												<core:CustomData key="white" value="inprocess" writeToDom="{= ${item>Item_Status} === '4000' || ${item>Item_Status} === '4100'}"></core:CustomData>
+												<core:CustomData key="green" value="inprocess" writeToDom="{= ${item>Item_Status} === '0002' || ${item>Item_Status} === '0000'}"></core:CustomData>
+												<core:CustomData key="red" value="inprocess" writeToDom="{= ${item>Item_Status} === '0008' || ${item>Item_Status} === '0012'}"></core:CustomData>
+												<core:CustomData key="warn" value="inprocess" writeToDom="{= ${item>Item_Status} === '0004' }"></core:CustomData>
+											</customData>
+											<buttons>
+												<Button text="{i18n>Action}" enabled="{edit>/switchState}" type="Accept" class="sapUiSizeCompact" press="onPressAction"
+													tooltip="{item>ItemShortText}"/>
+												<Button text="{i18n>detail}" type="Emphasized" press="onPressDetail" icon="sap-icon://form" class="sapUiSizeCompact"
+													tooltip="{item>ItemShortText}"/>
+											</buttons>
+										</NotificationListItem>
+									</items>
+								</List>
+							</content>
+						</Panel>
+					</VBox>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
