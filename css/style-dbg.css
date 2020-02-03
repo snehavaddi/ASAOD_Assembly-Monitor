@@ -1,0 +1,262 @@
+    /* Enter your custom styles here */
+
+.sapMToken {
+    float: left;
+}
+
+.pageBg {
+    background-image: url('../images/bg.jpg');
+    webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.pageAbg {
+    background-image: url('../images/abg.jpg');
+    webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.adminView {
+    width: 100%;
+    background-color: #D8F0DA !important;
+    border: 1px;
+    min-width: 100%;
+    position: relative;
+    opacity: 0.97;
+    background: transparent;
+}
+
+.vboxHome {
+    background: inherit;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sapMLIB.whitebox[data-white] {
+    background-color: #008fd3;
+}
+
+.sapMNLB.whitebox[data-white] {
+    background-color: #008fd3;
+}
+
+.sapMNLI.whitebox[data-white] {
+    background-color: #008fd3;
+}
+
+.sapMLIB.whitebox[data-red] {
+    background-color: #fb1b0270;
+}
+
+.sapMNLB.whitebox[data-red] {
+    background-color: #fb1b0270;
+}
+
+.sapMNLI.whitebox[data-red] {
+    background-color: #fb1b0270;
+}
+
+.sapMLIB.wbox[data-ep] {
+    background-color: #fb1b0270;
+}
+
+.sapMNLB.wbox[data-ep] {
+    background-color: #fb1b0270;
+}
+
+.sapMNLI.wbox[data-ep] {
+    background-color: #fb1b0270;
+}
+
+.sapMLIB.wbox[data-vp] {
+    background-color: #f0ab0073;
+}
+
+.sapMNLB.wbox[data-vp] {
+    background-color: #f0ab0073;
+}
+
+.sapMNLI.wbox[data-vp] {
+    background-color: #f0ab0073;
+}
+
+.sapMLIB.whitebox[data-yellow] {
+    background-color: #f0ab0073;
+}
+
+.sapMNLB.whitebox[data-yellow] {
+    background-color: #f0ab0073;
+}
+
+.sapMNLI.whitebox[data-yellow] {
+    background-color: #f0ab0073;
+}
+
+.sapMLIB.whitebox[data-green] {
+    background-color: #48bf1c;
+}
+
+.sapMNLB.whitebox[data-green] {
+    background-color: #48bf1c;
+}
+
+.sapMNLI.whitebox[data-green] {
+    background-color: #48bf1c;
+}
+
+.sapMLIB.whitebox[data-warn] {
+    background-color: #f0ab00;
+}
+
+.sapMNLB.whitebox[data-warn] {
+    background-color: #f0ab00;
+}
+
+.sapMNLI.whitebox[data-warn] {
+    background-color: #f0ab00;
+}
+
+.vBoxHome:before {
+    filter: blur(10px);
+}
+
+.homeLabel {
+    color: white;
+}
+
+.headerBar {
+    background: inherit;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+}
+
+.headerBar:before {
+    filter: blur(10px);
+}
+
+.details {
+    font-weight: bold;
+}
+
+.headerBarTitle {
+    text-shadow: none;
+    color: white !important;
+    font-size: xx-large;
+    font-variant-caps: small-cap;
+}
+
+.homeTitle,
+.homeLink {
+    text-shadow: none;
+    text-decoration: underline;
+}
+
+.homeLink {
+    color: white;
+}
+
+.homeCell>div {
+    padding: 0px !important;
+}
+
+.homeNav>.sapMBtnText {
+    color: white !important;
+    text-shadow: none;
+}
+
+.homeNav:not(.sapMBtnDisabled) .sapMBtnTransparent>.sapMBtnIcon,
+:not(.sapMBtnDisabled) .sapMBtnGhost>.sapMBtnIcon {
+    color: white !important;
+}
+
+.phasePanel {
+    margin-top: 10px;
+    background: #008FD3;
+}
+
+.projectTitle {
+    font-style: italic;
+    font-weight: bold;
+    font-size: large;
+    margin: 10px 0px 10px 5px;
+}
+
+.headBtn[data-personal] {
+    background-color: mediumseagreen;
+    border-style: solid;
+    border-color: white;
+    padding: 0px;
+}
+
+.headBtn[data-team] {
+    background-color: mediumseagreen;
+    border-style: solid;
+    border-color: white;
+    padding: 0px;
+}
+
+.headBtn[data-fav] {
+    background-color: mediumseagreen;
+    border-style: solid;
+    border-color: white;
+    padding: 0px;
+}
+
+.headBtn[data-search] {
+    background-color: mediumseagreen;
+    border-style: solid;
+    border-color: white;
+    padding: 0px;
+}
+
+.sapMLIB.wbox[data-passed] {
+    /*background-color: #e35500;*/
+    background-image: linear-gradient(to right, rgba(255, 99, 71, 0), rgba(255, 99, 71, 1));
+}
+
+.sapMNLB.wbox[data-passed] {
+    /*background-color: #e35500;*/
+    background-image: linear-gradient(to right, rgba(255, 99, 71, 0), rgba(255, 99, 71, 1));
+}
+
+.sapMNLI.wbox[data-passed] {
+    /*background-color: #e35500;*/
+    background-image: linear-gradient(to right, rgba(255, 99, 71, 0), rgba(255, 99, 71, 1));
+}
+
+.sapMLIB.wbox[data-sameday] {
+    /*background-color: #f0ab00;*/
+    background-image: linear-gradient(to right, rgba(240, 171, 0, 0), rgba(240, 171, 0, 1));
+}
+
+.sapMNLB.wbox[data-sameday] {
+    /*background-color: #f0ab00;*/
+    background-image: linear-gradient(to right, rgba(240, 171, 0, 0), rgba(240, 171, 0, 1));
+}
+
+.sapMNLI.wbox[data-sameday] {
+    /*background-color: #f0ab00;*/
+    background-image: linear-gradient(to right, rgba(240, 171, 0, 0), rgba(240, 171, 0, 1));
+}
+
+.sapMLIB.wbox[data-before] {
+    background-image: linear-gradient(to right, rgba(60, 179, 113, 0), rgba(60, 179, 113, 1));
+}
+
+.sapMNLB.wbox[data-before] {
+    background-image: linear-gradient(to right, rgba(60, 179, 113, 0), rgba(60, 179, 113, 1));
+}
+
+.sapMNLI.wbox[data-before] {
+    background-image: linear-gradient(to right, rgba(60, 179, 113, 0), rgba(60, 179, 113, 1));
+    .phaseText {
+        color: white;
+        font-style: italic;
+    }
