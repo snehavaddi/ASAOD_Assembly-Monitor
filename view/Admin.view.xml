@@ -1,0 +1,47 @@
+<mvc:View controllerName="asaod.ASAOD.controller.Admin" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc"
+	displayBlock="true" xmlns="sap.m">
+	<App id="idAppControl">
+		<pages>
+			<Page title="{i18n>aTitle}" showNavButton='true' navButtonPress='onNavBack' class="sapUiSizeCompact pageBg">
+				<content>
+					<Table id="idProductsTable" inset="false" items="{ path: 'hdr>/results'}">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="Admin" level="H2"/>
+									<ToolbarSpacer/>
+									<Button text="Add" type="Accept" icon="sap-icon://add-employee" press="onAddAdmin"></Button>
+									<Button text="Refresh" press="onRefreshAdmin" type="Emphasized" icon="sap-icon://refresh"></Button> 
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column  >
+								<Text text="Name"/>
+							</Column>
+							<Column >
+								<Text text="Tool Admin"/>
+							</Column>
+							<Column minScreenWidth="Desktop" demandPopin="true">
+								<Text text="Distribution List"/>
+							</Column>
+							<Column >
+								<Text text="Actions"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem type="Active" press="selectToUpdateRow">
+								<cells>
+									<ObjectIdentifier text="{hdr>Uname}" title="{hdr>Name}"/>
+									<Switch state="{path : 'hdr>Istoolie' , formatter : '.formatter.toBoolean'}" customTextOff="No" customTextOn="Yes" enabled="false"/>
+									<Link text="Show DLs" enabled="{path : 'hdr>Islead' , formatter : '.formatter.toBoolean'}" press="ShowDls"/>
+									<Button icon="sap-icon://delete" tooltip="DELETE {hdr>Name}" press="onDeleteAdmin"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>
