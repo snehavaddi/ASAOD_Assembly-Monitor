@@ -1,0 +1,175 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"id": "ep_dashboard",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"permissions": [
+			"notifications"
+		],
+		"web_accessible_resources": [
+			"48.png"
+		]
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_bluecrystal"
+		]
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": "epdash.epdash.view.app",
+		"dependencies": {
+			"minUI5Version": "1.60.1",
+			"libs": {
+				"sap.m": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "epdash.epdash.i18n.i18n"
+				}
+			}
+		},
+		"config": {
+			"fullWidth": true
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "epdash.epdash.view",
+				"controlId": "app1",
+				"controlAggregation": "pages"
+			},
+			"routes": [
+				{
+					"pattern": "",
+					"name": "main",
+					"target": "main"
+				},
+				{
+					"pattern": "View1",
+					"name": "landscape",
+					"target": "landscape"
+				},
+				{
+					"pattern": "pqp_project_detail/{projectid}",
+					"name": "pqp_project_detail",
+					"target": "pqp_project_detail"
+				},
+				{
+					"pattern": "handover",
+					"name": "handover",
+					"target": "handover"
+				},
+				{
+					"pattern": "item_form",
+					"name": "item_form",
+					"target": "item_form"
+				},
+				{
+					"pattern": "external_form/{collection_id}",
+					"name": "external_form",
+					"target": "external_form"
+				},
+				{
+					"pattern": "hfc_view/{holiday_flag}",
+					"name": "hfc_view",
+					"target": "hfc_view"
+				},
+				{
+					"pattern": "hfc_reminder/{page}",
+					"name": "hfc_reminder",
+					"target": "hfc_reminder"
+				},
+				{
+					"pattern": "hfc_admin",
+					"name": "hfc_admin",
+					"target": "hfc_admin"
+				},
+				{
+					"pattern": "message_shutdow",
+					"name": "message_shutdow",
+					"target": "message_shutdow"
+				}
+			],
+			"targets": {
+				"main": {
+					"viewName": "main",
+					"viewLevel": 1
+				},
+				"landscape": {
+					"viewName": "landscape"
+				},
+				"pqp_project_detail": {
+					"viewName": "pqp_project_detail",
+					"transition": "flip"
+				},
+				"handover": {
+					"viewName": "handover",
+					"transition": "fade"
+				},
+				"item_form": {
+					"viewName": "item_Status_form",
+					"transition": "fade"
+				},
+				"external_form": {
+					"viewPath": "epdash.epdash.external_view",
+					"viewName": "ext_form",
+					"transition": "fade"
+				},
+				"hfc_view": {
+					"viewPath": "epdash.epdash.external_view",
+					"viewName": "hfc_view",
+					"transition": "fade"
+				},
+				"hfc_reminder": {
+					"viewPath": "epdash.epdash.external_view",
+					"viewName": "hfc_reminders",
+					"transition": "fade"
+				},
+				"hfc_admin": {
+					"viewPath": "epdash.epdash.external_view",
+					"viewName": "hfc_admin",
+					"transition": "fade"
+				},
+				"message_shutdow": {
+					"viewPath": "epdash.epdash.message_views",
+					"viewName": "shutdown",
+					"transition": "fade"
+				}
+			}
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/brlt/emy_patch",
+		"_version": "1.1.0"
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

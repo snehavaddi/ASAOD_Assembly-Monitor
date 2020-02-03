@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="refresh" content="28800;URL= https://epdash-a95972b99.dispatcher.hana.ondemand.com/">
+		<title>EP Dashboard</title>
+         <link rel="icon" href="img/logo.png" type="image/png" sizes="5x5"/>
+		<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/1.72.3/resources/sap-ui-core.js"
+			data-sap-ui-libs="sap.m,sap.ui.commons"
+			data-sap-ui-theme="sap_belize"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-appCachebuster="./"
+			data-sap-ui-resourceroots='{"epdash.epdash": ""}'>
+		</script>
+		<script>
+			// window.resizeTo(250, 250);
+		</script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.debug.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	  <!--<link rel="stylesheet" href="https://unpkg.com/fiori-fundamentals@1.7.0/dist/fiori-fundamentals.min.css"/>-->
+	  <script>
+			sap.ui.getCore().attachInit(function() {
+			    new sap.m.App ("myApp",{
+                pages: [
+                new sap.m.Page({
+                  showHeader: false,
+                  enableScrolling : true,
+                  content: [ new sap.ui.core.ComponentContainer({
+                    height : "100%", name : "epdash.epdash"
+                  })]
+                })
+              ]
+            }).placeAt("content");
+			});
+		
+		</script>
+
+	</head>
+
+	<body class="sapUiBody" id="content">
+		<div id="content1"></div>  
+         <audio id="idErrorSound">  
+             <source src="https://notificationsounds.com/soundfiles/dd458505749b2941217ddd59394240e8/file-sounds-1111-to-the-point.mp3"/> 
+         </audio>  
+	</body>
+</html>
