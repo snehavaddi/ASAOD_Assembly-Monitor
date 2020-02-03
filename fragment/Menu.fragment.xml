@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:u="sap.ui.unified">
+	<u:Menu>
+		<u:MenuItem text="Report a Bug/FR" select="openReportBug" icon="sap-icon://message-error"/>
+		<u:MenuItem text="Wiki User Guide" select="handleMenuItemPress" icon="sap-icon://e-learning"/>
+		<u:MenuItem text="What's New" icon="sap-icon://newspaper"></u:MenuItem>
+		<u:MenuItem text="About" select="handleMenuItemPress" icon="sap-icon://hint"/>
+		<!--<u:MenuItem text="Contact Developer" select="handleMenuItemPress" icon="sap-icon://email"/>-->
+	</u:Menu>
+</core:FragmentDefinition>

@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form">
+	<Dialog title="Details" icon="sap-icon://form">
+		<content>
+			<f:SimpleForm id="SimpleFormDisplay354wideDual" editable="false" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="3" labelSpanM="4"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="4" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="1" columnsM="1"
+				singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>executedBy}" class="labels"/>
+					<Text text="{/StartUser}" class="details"/>
+					<Label text="{i18n>startDate}" class="labels"/>
+					<Text class="details" text="{path : '/StartDate',type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'EEEE MMMM dd YYYY' ,source :'yyyymmdd'}}"/>
+					<Label text="{i18n>startTime}" class="labels"/>
+					<Text class="details" text="{path : '/StartTime',type: 'sap.ui.model.type.Time', formatOptions: { pattern: 'hh:mm:ss' ,source :'hhmmss'}} CET"/>
+					<Label text="{i18n>comments}" class="labels"/>
+					<Text class="details" text="{/GlobalComment}"/>
+				</f:content>
+			</f:SimpleForm>
+			<!--<Button text="{i18n>log}" width="100%" press="viewLogHeaders"/>-->
+			<Panel>
+				<List items="{log>/results}" headerText="Click Below for details Logs" noDataText="No Logs Found">
+					<items>
+						<ObjectListItem title="{log>StShortText}" type="Active" press="onLogPress" number=" "  numberUnit="{i18n>more}">
+							<firstStatus>
+								<ObjectStatus icon="{path : 'log>Status', formatter : '.formatter.ItemStatusIcon'}" text="{log>StDescription}"  state="{path : 'log>Status', formatter : '.formatter.StatusState'}"/>
+							</firstStatus>
+							<attributes>
+								<ObjectAttribute text="Run by {log>ItStartUser}"/>
+								<ObjectAttribute
+									text="On {path : 'log>ItStartDate',type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd YYYY' ,source :'yyyymmdd'}}, At {path : 'log>ItStartTime',type: 'sap.ui.model.type.Time', formatOptions: { pattern: 'hh:mm:ss' ,source :'hhmmss'}} CET"/>
+							</attributes>
+						</ObjectListItem>
+					</items>
+				</List>
+			</Panel>
+		</content>
+		<endButton>
+			<Button press="closeDetailDialog" text="Close" tooltip="{/ItemShortText}"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

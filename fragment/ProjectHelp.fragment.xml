@@ -1,0 +1,21 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:f="sap.f">
+	<Dialog title="{i18n>cCode}">
+		<endButton>
+			<Button text="{i18n>close}" press="closeProjectHelp"/>
+		</endButton>
+		<content>
+			<VBox alignItems="Center" class="vboxMarginTop">
+				<f:Avatar src="{imageModel>/path}/images/Green.png" displaySize="M" displayShape="Square"></f:Avatar>
+				<Text text="Project is on track" class="sapUiSmallMarginTop"></Text>
+			</VBox>
+			<VBox alignItems="Center" class="vboxMarginTop">
+				<f:Avatar src="{imageModel>/path}/images/Yellow.png" displaySize="M" displayShape="Square"></f:Avatar>
+				<Text text="Project approaching next deadline" class="sapUiSmallMarginTop"></Text>
+			</VBox>
+			<VBox alignItems="Center" class="vboxMarginTop">
+				<f:Avatar src="{imageModel>/path}/images/Red.png" displaySize="M" displayShape="Square"></f:Avatar>
+				<Text text="Project overall delayed" class="sapUiSmallMarginTop"></Text>
+			</VBox>
+		</content>
+	</Dialog>
+</core:FragmentDefinition>

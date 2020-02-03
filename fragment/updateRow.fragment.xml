@@ -1,0 +1,60 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:l="sap.ui.layout" controllerName="sap.ui.comp.sample.smartform.SmartForm" height="100%">
+	<Dialog title="Update Admin" contentHeight="500px" contentWidth="150px" class="sapUiSizeCompact">
+		<content>
+			<smartForm:SmartForm  layout="ResponsiveGridLayout" id="update_fragment">
+				<smartForm:Group >
+					<smartForm:GroupElement label="Name">
+						<ComboBox  placeholder="Select Employee Name" showSecondaryValues="true" items="{DlMembers>/results}" required="true"
+							selectedKey="{admin>/Name}" value="{update_admin>/Name}" editable="false">
+							<core:ListItem key="{DlMembers>Bname}" text="{DlMembers>Name}" additionalText="{DlMembers>Bname}"/>
+						</ComboBox>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="Tools Admin" >
+						<Switch state="{path : 'update_admin>/Istoolie'}">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Switch>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="Lead/Manager">
+						<Switch state="{path : 'update_admin>/Islead'}" enabled="false">
+							<layoutData>
+								<FlexItemData growFactor="1"/>
+							</layoutData>
+						</Switch>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement label="DL">
+						<SearchField  placeholder="search for..." enableSuggestions="true" showSearchButton="false" suggest="onSuggest"
+							suggestionItems="{DlList>/results}" value="{update_admin>/Dl}">
+							<layoutData>
+								<l:GridData span="XL2 L2 M3 S10"/>
+							</layoutData>
+							<suggestionItems>
+								<SuggestionItem text="{DlList>DlName}" key="{DlList>DlName}"/>
+							</suggestionItems>
+						</SearchField>
+						<Button icon="sap-icon://sys-add" press="onDlAdd_update" tooltip="validate {admin>/Dl} ">
+							<layoutData>
+								<l:GridData span="XL1 L1 M1 S2"/>
+							</layoutData>
+						</Button>
+					</smartForm:GroupElement>
+					<smartForm:GroupElement>
+						<l:VerticalLayout>
+							<Tokenizer tokens="{list>/results}">
+								<Token key="{list>Dl}" text="{list>Dl}" delete="onDeleteToken_update"></Token>
+							</Tokenizer>
+						</l:VerticalLayout>
+					</smartForm:GroupElement>
+				</smartForm:Group>
+			</smartForm:SmartForm>
+		</content>
+		<beginButton >
+			<Button text="Update" press="updateAdminRow"></Button>
+		</beginButton>
+		<endButton>
+			<Button text="Close" press="closeUpdateDialog"></Button>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
